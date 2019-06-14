@@ -1,0 +1,68 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+// Lucent Innovation Sarvesh Patel
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category
+if(isset($category)){
+    $category_id = $category->getId();
+}else{
+    $category_id = '';
+}
+?>
+
+<ol class="items">
+    <?php 
+
+ foreach ($filterItems as $filterItem):  ?>
+        <li class="item">
+            <?php 
+            $optionValue = $filterItem->getValue();
+            if($filterItem->getName()=='Category'){
+                $attributeId =  '0';
+                $attributeCode =  'category';
+            }else{
+                $attributeId =  $filterItem->getFilter()->getAttributeModel()->getAttributeId();
+                $attributeCode =  $filterItem->getFilter()->getAttributeModel()->getAttributeCode();
+            }
+            //echo $block->escapeUrl($filterItem->getUrl());
+            //print_r($filterItem->getValue());
+            //$attributeCode =  $filterItem->getFilter()->getAttributeModel()->getAttributeCode();
+            $label =  $filterItem->getValue();    
+            if($attributeCode!='price'){
+              $label =  $filterItem->getLabel();
+            }
+
+            if ($filterItem->getCount() > 0):  
+               
+            ?>
+                <div href="javascript:;"  class="<?php echo $attributeCode; ?>_class  <?php echo $attributeCode; ?>_<?php echo $filterItem->getValue();?>" value="<?php echo $label;?>" data="<?php echo $filterItem->getValue();?>"  category-id="<?php echo $category_id;?>"   code='<?php echo $attributeCode; ?>'>
+                    <?= /* @escapeNotVerified */ $filterItem->getLabel() ?>
+                    <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                        <span class="count"><?= /* @escapeNotVerified */ $filterItem->getCount() ?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1):?> <?= /* @escapeNotVerified */ __('item') ?><?php else:?> <?= /* @escapeNotVerified */ __('items') ?><?php endif;?></span></span>
+                    <?php endif; ?>
+                </div>
+            <?php else:?>
+                <?= /* @escapeNotVerified */ $filterItem->getLabel() ?>
+                <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                    <span class="count"><?= /* @escapeNotVerified */ $filterItem->getCount() ?><span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1):?><?= /* @escapeNotVerified */ __('item') ?><?php else:?><?= /* @escapeNotVerified */ __('items') ?><?php endif;?></span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>
+
+

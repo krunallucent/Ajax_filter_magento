@@ -1,0 +1,35 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+	
+
+ 	
+
+
+
+  
+	   <referenceBlock name="catalog.navigation.renderer">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Lucent_Hello::layer/filter.phtml</argument>
+            </action>
+        </referenceBlock>
+
+	
+        <referenceBlock name="category.products.list">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Lucent_Hello::product/list.phtml</argument>
+            </action>
+        </referenceBlock>
+
+    	<referenceBlock name="catalog.leftnav">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Lucent_Hello::layer/view.phtml</argument>
+            </action>
+        </referenceBlock>
+     	<referenceBlock name="category.image" remove="true"/> 
+
+        <referenceBlock name="catalog.main.title" remove="true"/>
+        
+    </body>
+</page>
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+    
+
+
+
+
+        <referenceBlock name="catalogsearch.navigation.renderer">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Lucent_Hello::layer/filter.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="catalogsearch.leftnav">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Lucent_Hello::layer/view.phtml</argument>
+            </action>
+        </referenceBlock>
+
+
+       <referenceBlock name="search.result">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Lucent_Hello::result.phtml</argument>
+            </action>
+        </referenceBlock>
+
+	    <referenceBlock name="catalog.compare.sidebar" remove="true"/> 
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+
+
+        <!--  add static cms block  in sidebar -->
+        <!--
+        <referenceContainer name="sidebar.additional">
+            <block class="Magento\Cms\Block\Block" name="viewleft">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">viewleft</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        -->
+
+
+
+
+
+
+    </body>
+</page>
+
+
+

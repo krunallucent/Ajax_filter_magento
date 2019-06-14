@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Lucent_Hello::greetings" title="Greetings" translate="title" module="Lucent_Hello" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Lucent_Hello" resource="Lucent_Hello::greetings"/>
+		<add id="Lucent_Hello::greetings_helloworld" title="Hello World" translate="title" module="Lucent_Hello" parent="Lucent_Hello::greetings" sortOrder="10" dependsOnModule="Lucent_Hello" action="hello/hello" resource="Lucent_Hello::greetings"/>
+	</menu>
+</config>
